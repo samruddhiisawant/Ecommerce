@@ -1,0 +1,54 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+{% block content%}
+
+
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Product Attribute Values</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                  <p align="right">
+                    <a class="btn btn-success " href="/custom/create_attribute_value/"> <i class="fas fa-plus-square"></i>  Add Attribute Value</a>
+                <tr>
+                  <th>Attribute Value ID</th>
+                  <th>Product Attribute id</th>
+                  <th>Product Attribute Value </th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                  
+                </tr>
+                </thead>
+              
+                <tbody>
+                
+                {% for a in attr %}
+                
+                <td>{{a.id}}</td>
+                <td>{{a.product_attribute_id}}</td>
+                
+                <td>{{a.product_Attribute_value}}</td> 
+                <td> <a class="btn btn-sm btn-info" href="{% url 'updateattribute_value' a.id %}"><i class="fas fa-edit"></i></a></td>
+                <td> <a class="btn btn-sm btn-danger" href="{% url 'deleteattribute_value' a.id %}"><i class="fas fa-trash-alt"></i></i> </a></td>
+                
+
+
+                </tr>
+                <tr>
+                {% endfor %} 
+                 
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+{% endblock content %}

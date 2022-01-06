@@ -1,0 +1,56 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+{% block content%}
+
+
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Product Attribute Association</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                  <p align="right">
+                    <a class="btn btn-success " href="/custom/create_attribute/"> <i class="fas fa-plus-square"></i> Add Attribute Association</a>
+                <tr>
+                  <th>Attribute Association ID</th>
+                  <th>Product</th>
+                  
+                  <th>Product Attribute Value id</th>
+                  <th>Product Attributeid</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                  
+                </tr>
+                </thead>
+              
+                <tbody>
+                
+                {% for a in attr %}
+                
+                <td>{{a.id}}</td>
+                <td>{{a.Product_id}}</td>
+                <td>{{a.product_attribute_value_id}}</td> 
+                <td>{{a.Product_Attribute_id}}</td> 
+                <td> <a class="btn btn-sm btn-info" href="{% url 'update_assc' a.id %}"><i class="fas fa-edit"></i></a></td>
+                <td> <a class="btn btn-sm btn-danger" href="{% url 'delete_assc' a.id %}"><i class="fas fa-trash-alt"></i></i> </a></td>
+                
+
+
+                </tr>
+                <tr>
+                {% endfor %} 
+                 
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+{% endblock content %}

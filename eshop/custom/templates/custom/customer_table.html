@@ -1,0 +1,61 @@
+{% extends 'custom/base.html'%}
+{% load static %}
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Customers Info</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>Customer ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>date Joined</th>
+                    <th>Last Login</th>
+                    <th>Phone</th>
+                    <th>is Active</th>
+                    <th>is ADMIN</th>
+                   
+
+                  </tr>
+                  </thead>
+                
+                  <tbody>
+                  {% for x in form %}
+                  <tr>
+                    <td>{{x.id}}</td>
+                    <td>{{x.first_name}}
+                    </td>
+                    <td>{{x.last_name}}</td>
+                    <td>{{x.email}}</td>
+                    <td>{{x.date_joined}}</td>
+                    <td>{{x.last_login}}</td>
+                    <td>{{x.phone}}</td>
+                    <td>{{x.is_active}}</td>
+                    <td>{{x.is_admin}}</td>
+
+                  </tr>
+                  <tr>
+                  {% endfor %}
+                   
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+          
+</body>
+</html>
+{% endblock content%}

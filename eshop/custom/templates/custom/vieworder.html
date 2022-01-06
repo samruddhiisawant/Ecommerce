@@ -1,0 +1,144 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+{% block content%}
+
+
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+                {% for x in order %}
+              <h3 class="card-title">Order No.{{x.id}}</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  
+                  <th>Customer</th>
+                  <th>status</th>
+                  <th>AWB_no</th>
+                  <th>Coupon Id</th>
+                  <th>Grand Total</th>
+                  <th>Transaction Id</th>
+                  
+                  
+                 
+
+                </tr>
+                </thead>
+              
+                <tbody>
+                
+                <tr>
+                  <td>{{x.id}}</td>
+                  <td>{{x.created_date}}</td>
+                  <td>{{x.customer}}</td>
+                  <td>{{x.status}}</td>
+                  <td>{{x.AWB_NO }}</td>
+                  <td>{{x.coupon_id}}</td>
+                  <td>{{x.grand_total}}</td>
+                  <td>{{x.transaction_id}}</td>
+                </tr>
+                <tr>
+                
+
+                </tfoot>
+              </table>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                {% for add in address %}
+                <div class="card-body">
+                  <h5 class="card-title">Billing Address :</h5><br>
+                  <p class="card-text">{{add.address_1}}{{add.address_2}}</p>
+                  <p class="card-text">{{add.city}},{{add.state}}</p>
+                  <p class="card-text">{{add.country}}</p>
+                  <p class="card-text">{{add.pincode}}</p>
+                  
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Shipping Address :</h5><br>
+                  <p class="card-text">{{add.address_1}}{{add.address_2}}</p>
+                  <p class="card-text">{{add.city}},{{add.state}}</p>
+                  <p class="card-text">{{add.country}}</p>
+                  <p class="card-text">{{add.pincode}}</p>
+                  
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+          <div class="row">
+            <div class="col-6">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Order Info</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Shipping Method</th>
+                      <th>Order Status</th>
+                    
+                    </tr>
+                    </thead>
+
+                  
+                    <tbody>
+                    {% for i in items %}
+                    <tr>
+                        <td>{{i.product_id}}</td>
+                      <td>{{i.quantity}}</td>
+                      <td>{{x.shipping_method}}</td>
+                      <td>{{x.status}}</td>
+                      
+                      
+                    </tr>
+                    <tr>
+                    {% endfor %}
+
+    
+                    </tfoot>
+                  </table>
+                {% endfor%}
+                  
+    
+                </div>
+                <!-- /.card-body -->
+              </div>
+
+              
+
+
+
+
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+{% endblock content %}

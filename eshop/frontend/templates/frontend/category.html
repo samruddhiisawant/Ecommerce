@@ -1,0 +1,217 @@
+{% extends 'frontend/base.html'%}
+{% load static %}
+{% block content%}
+
+	
+	
+<section id="advertisement">
+    <div class="container">
+        <img src="{% static 'images/shop/advertisement.jpg' %}" alt="" />
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Category</h2>
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    
+                                </h4>
+                            </div>
+                            <div id="sportswear" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li><a href="">Nike </a></li>
+                                        <li><a href="">Under Armour </a></li>
+                                        <li><a href="">Adidas </a></li>
+                                        <li><a href="">Puma</a></li>
+                                        <li><a href="">ASICS </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            {% for c in categ %}
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#{{c.name}}">
+                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        {{c.name}}
+                                        
+                                    </a>
+                                </h4>
+                            </div>
+                            
+                            <div id="{{c.name}}" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul>
+                                        
+                                        <li><a href="">{{c}}</a></li>
+                                         
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        
+                         <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#womens">
+                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        
+                                    </a>
+                                </h4>
+                            </div> 
+                             <div id="womens" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li><a href="">Fendi</a></li>
+                                        <li><a href="">Guess</a></li>
+                                        
+                                    </ul>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                
+                            </div>
+                        </div>
+                    </div><!--/category-productsr-->
+                
+                    <div class="brands_products"><!--brands_products-->
+                        <h2>Brands</h2>
+                        <div class="brands-name">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href=""> <span class="pull-right">(50)</span>Acne</a></li>
+                                <li><a href=""> <span class="pull-right">(56)</span>Grüne Erde</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div><!--/brands_products-->
+                    
+                    <div class="price-range"><!--price-range-->
+                        <h2>Price Range</h2>
+                        <div class="well">
+                             <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+                             <b>$ 0</b> <b class="pull-right">$ 600</b>
+                        </div>
+                    </div><!--/price-range-->
+                    
+                    <div class="shipping text-center"><!--shipping-->
+                        <img src="{% static 'images/home/shipping.jpg' %}" alt="" />
+                    </div><!--/shipping-->
+                    
+                </div>
+            </div>
+            
+            <div class="col-sm-9 padding-right">
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center"> Category Items</h2>
+
+                    
+                         
+                            {% for s in sub%}
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single products">
+                                        <div class="productinfo text-center">
+                                            <a href="/productdetail/{{product.id}}/">
+                                            {% if s.Product_id.productimages_set.first %} 
+                                                <img class="thumbnail" src="{{s.Product_id.productimages_set.first.image.url}}" width="268" height="249" alt"/>
+        
+                                            {% endif %}
+                                                
+                                            <h2>{{s.Product_id}}</h2>
+                            
+                                            <h4 style = "display:inline-block; float:right">${{s.Product_id.price|floatformat:2}}</h4>
+                                            <a href="" data-product={{product.id}} data-action="add" onclick="myFunction()" class="btn btn-default add-to-cart update-cart ">
+                                                <i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            </a>
+                                            
+                                        </div>
+                                        <div class="choose">
+                                            <ul class="nav nav-pills nav-justified">
+                                                {% if user.is_authenticated %}
+                                                <li><a data-product={{product.id}}  data-action="" onclick="myFunction()" href=""><i class="fa fa-plus-square "></i>Add to wishlist</a></li>
+                                                {% else %}
+                                                <li><a href=""><i class="fa fa-plus-square disabled"></i>Add to wishlist</a></li>
+                                                {% endif%}
+                                                <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                    
+                            </div>
+                            
+                            {% endfor %}
+                        
+                </div>
+            </div>								
+
+
+                    <ul class="pagination">
+                        <li class="active"><a href="">1</a></li>
+                        <li><a href="">2</a></li>
+                        <li><a href="">3</a></li>
+                        <li><a href="">&raquo;</a></li>
+                    </ul>
+                </div><!--features_items-->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/price-range.js' %}"></script>
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
+
+        {% endblock%}

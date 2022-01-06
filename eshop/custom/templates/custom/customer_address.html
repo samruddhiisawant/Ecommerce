@@ -1,0 +1,57 @@
+{% extends 'custom/base.html'%}
+{% load static %}
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Customer Address</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>Customer Id</th>
+                    <th>Address 1</th>
+                    <th>Address 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Pin Code</th>
+
+                  </tr>
+                  </thead>
+                
+                  <tbody>
+                  {% for x in addr %}
+                  <tr>
+                    <td>{{x.cust_id}}</td>
+                    <td>{{x.address_1}}
+                    </td>
+                    <td>{{x.address_2}}</td>
+                    <td>{{x.city}}</td>
+                    <td>{{x.state}}</td>
+                    <td>{{x.country}}</td>
+                    <td>{{x.pincode}}</td>
+                    
+
+                  </tr>
+                  <tr>
+                  {% endfor %}
+                   
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+          
+</body>
+</html>
+{% endblock content%}

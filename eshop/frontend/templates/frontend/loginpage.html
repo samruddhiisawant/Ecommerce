@@ -1,0 +1,52 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% block content%}
+
+	
+	<section id="form"><!--form-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-1">
+					<div class="login-form"><!--login form-->
+						<h2>Login to your account</h2>
+						<form method="POST" action="#">
+							{% csrf_token%}
+							<input type="text" name="username" placeholder="Username.." />
+							<input type="password" name="password" placeholder="Password..." />
+							
+							<a align="right" href="/reset_password/"> Forgot Password <i class="fa fa-key" aria-hidden="true"></i></i></a>
+							<button type="submit" class="btn btn-default">Login</button>
+						</form>
+						<br>
+						<p><strong>-- OR --</strong></p>
+						
+						<a class="btn btn-primary"  href="{% url 'social:begin' 'twitter' %}"></i>Login with Twitter  <i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a><br>
+						<a class="btn btn-primary"  href="{% url 'social:begin' 'google-oauth2' %}">
+							Google Login <i class="fa fa-google-plus-square fa-lg" aria-hidden="true"></i></a>
+					  
+
+					</div><!--/login form-->
+					{% for message in messages %}
+						<pid="messages">{{messages}}</p>
+					{% endfor%}
+				</div>
+				
+				</div>
+			</div>
+		</div>
+	</section><!--/form-->
+	
+	
+	
+
+  
+    <script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/price-range.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+{% block content%}
+
+
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Contact Us</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                  <p align="right">
+                    {% comment %} <a class="btn btn-primary " href="/custom/create_attribute_value/">  Add Attribute Value</a> {% endcomment %}
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email </th>
+                  <th>Contact</th>
+                  <th>Message</th>
+                  
+                  
+                </tr>
+                </thead>
+              
+                <tbody>
+                
+                {% for a in cat %}
+                
+                <td>{{a.id}}</td>
+                <td>{{a.name}}</td>
+                
+                <td>{{a.email}}</td> 
+                <td>{{a.contact_no}}</td> 
+                <td>{{a.message}}</td> 
+                
+                </tr>
+                <tr>
+                {% endfor %} 
+                 
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+{% endblock content %}

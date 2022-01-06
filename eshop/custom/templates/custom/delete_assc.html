@@ -1,0 +1,26 @@
+{% extends 'custom/base.html'%}
+{% load static %}
+{% block content %}
+
+	<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+        <div class="text-center">
+
+			<p>Are you sure you want to delete "{{item.id}}"?</p>
+
+			<form action="" method="POST">
+				
+				{% csrf_token %}
+				<a class="btn btn-warning" href="/custom/">Cancel</a>
+
+				<input class="btn btn-danger" type="submit" name="Confirm">
+			</form>
+        </p>
+        </div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

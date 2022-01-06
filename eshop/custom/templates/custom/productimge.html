@@ -1,0 +1,66 @@
+{% extends 'custom/base.html'%}
+{% load static %}
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title"><h4>Product Image</h4></h2>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                 <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <p align="right">
+                  <a class="btn btn-success btn" href="/custom/createproductimg/"> <i class="fas fa-plus-square"></i> Add product Image</a>
+                  </p>
+                  <tr>
+                    <th>Product Img_ID</th>
+                    
+                    <th>Product</th>
+                    <th>Title</th>
+                    <th>Image </th>
+                    <th>Image File</th>
+                    
+                    <th>Edit</th>
+                    <th>Delete</th>
+
+
+                  </tr>
+                  </thead>
+                  
+                  <tbody>
+                  {% for x in img %}
+                  <tr>
+                    <td>{{x.id}}</td>
+                    <td>{{x.product}}</td>
+                    <th>{{x.title}}</th>
+                    
+                    <td> <img  src="{{x.image.url}}" width="70" height="70" /></td>
+               
+                    
+                    <td>{{x.image}}</td>
+                    
+                    
+                    <td> <a class="btn btn-sm btn-info" href="{% url 'updateproductimg' x.id %}"><i class="fas fa-edit"></i></a></td>
+                    <td> <a class="btn btn-sm btn-danger" href="{% url 'deleteproductimg' x.id %}"><i class="fas fa-trash-alt"></i></i> </a></td>
+                    
+                  </tr>
+                  <tr>
+                  {% endfor %}
+                    
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+          
+</body>
+</html>
+{% endblock content%}

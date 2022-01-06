@@ -1,0 +1,120 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% block content%}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li class="active">Track Orders</li>
+            </ol>
+        </div>
+        <h2>Your Order Details</h2>
+                    {% for l in order%}
+                    {% if forloop.counter < x%}
+                    <table>
+                        <tr>
+                           <td> Order Id:{{l.id}}</td>
+                        </tr>
+                    </table>
+                    {% endif%}
+                    {% endfor %}
+                    <hr>
+                    <div class="table-responsive cart_info">
+                        <div class="col sm-12">
+                        <table class="table table-condensed">
+                            <thead>
+                                
+                             {% if order %} 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                {% for x in order%}
+                                <td class="cart_product">
+                                   
+                                    {% for u in update%}
+                                    <a href="">
+                                        {% if u.product_id.productimages_set.first %} 
+                                            <img class="thumbnail" src="{{u.product_id.productimages_set.first.imageURL}}" width="90" height="90" />
+                                        {% endif %} 
+                                    </a><br><br>
+
+                                    <td class="cart_description">
+                                
+                                        <a>{{u.product_id}}</a>
+                                        <p>web Id:{{x.transaction_id}} </p> </td>
+
+                                
+
+                                <td><h4>${{u.product_id.price}}</h4></td>
+
+
+
+                                <td class="cart_quantity">
+
+                                <div class="cart_quantity_button">
+                                <input class="cart_quantity_input" type="text" name="quantity" value="{{u.quantity}}" autocomplete="off" size="2">
+                                    
+                                </div>
+
+                                </td>
+
+                               
+
+                                {% endfor%}
+                                <td class="cart_total">
+                                <p class="cart_total_price">${{x.grand_total}}</p>
+                                </td>
+                                <td><h5>Order Status:{{x.status}}</h5</td>
+                                <td><h5>Shipping: {{x.shipping_method}}</h5><td>
+
+                                {% endfor %}
+
+                                {% else %}
+
+                                {% if messages %}
+                                {% for message in messages%}
+                                <p style="color: red">{{message}}</p>
+                                {% endfor%}
+                                {% endif%}
+
+                                {% endif %}
+
+                                </tr>
+                            </tbody>
+            </table>
+        </div>
+
+
+
+<div class="container">
+    <div class="col my-4">
+        <h2>Enter your Order Id and Email address to track your order</h2>
+        <form method="post" action="#" id="trackerForm">{% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputname">Order Id</label>
+                    <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order Id">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Track Order</button>
+            </div>
+    </div>
+    <div class="col my-4">
+        <h2>Your Order Status</h2>
+        <div class="my-4">
+            <ul class="list-group" id="items">
+                Enter your order Id and  click Track Order to find details about your order!
+            </ul>
+        </div>
+        
+        
+  
+                </table>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

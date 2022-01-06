@@ -1,0 +1,61 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+{% block content%}
+
+
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Orders</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  
+                  <th>Customer</th>
+                  {% comment %} <th>status</th> {% endcomment %}
+                  <th>AWB_no</th>
+                  <th>Coupon Id</th>
+                  <th>Grand Total</th>
+                  <th>View</th>
+                  
+                 
+
+                </tr>
+                </thead>
+              
+                <tbody>
+                {% for x in res %}
+                <tr>
+                  <td>{{x.id}}</td>
+                  <td>{{x.created_date}}
+                  </td>
+                  
+                  <td>{{x.customer}}</td>
+                  {% comment %} <td>{{x.status}}</td> {% endcomment %}
+                  <td>{{x.AWB_NO }}</td>
+                  <td>{{x.coupon_id}}</td>
+                  
+                  <td>{{x.grand_total}}</td>
+                  <td> <a class="btn btn-sm btn-info" href="{% url 'orderinfo' x.id %}"><i class="fa fa-eye" aria-hidden="true"></i></i> </a></td>
+                 
+
+                </tr>
+                <tr>
+                {% endfor %}
+                 
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+{% endblock content %}

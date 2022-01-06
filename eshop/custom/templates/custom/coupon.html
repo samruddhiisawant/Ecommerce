@@ -1,0 +1,66 @@
+
+{% extends 'custom/base.html'%}
+{% load static %}
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Coupons</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                    <p align="right">
+                      <a class="btn btn-success" href="/custom/create_coupon/"> <i class="fas fa-plus-square"></i> Add Coupons </a>
+                      </p>
+                  <tr>
+                    <th>Coupons ID</th>
+                    <th>Code</th>
+                    
+                    <th>Discount %</th>
+                    <th>Active</th>
+                    <th>No of uses</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    
+
+                  </tr>
+                  </thead>
+                
+                  <tbody>
+                  {% for x in coup %}
+                  <tr>
+                    <td>{{x.id}}</td>
+                    <td>{{x.code}}
+                    </td>
+                    
+                    <td>{{x.discount}}</td>
+                    <td>{{x.active}}</td>
+                    <td>{{x.no_of_uses}}</td>
+
+                    <td> <a class="btn btn-sm btn-info" href="{% url 'update_coupon' x.id %}"><i class="fas fa-edit"></i></a></td>
+                    <td> <a class="btn btn-sm btn-danger" href="{% url 'delete_coupon' x.id %}"><i class="fas fa-trash-alt"></i></i> </a></td>
+                    
+                    
+
+                  </tr>
+                  <tr>
+                  {% endfor %}
+                   
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+          
+</body>
+</html>
+{% endblock content%}

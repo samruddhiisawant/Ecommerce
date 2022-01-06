@@ -1,0 +1,187 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% block content%}
+
+
+
+
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="left-sidebar">
+					
+					<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+						<div class="panel panel-default">
+							
+							{% comment %} <div id="sportswear" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul>
+										<li><a href="">Nike </a></li>
+										<li><a href="">Under Armour </a></li>
+										<li><a href="">Adidas </a></li>
+										<li><a href="">Puma</a></li>
+										<li><a href="">ASICS </a></li>
+									</ul>
+								</div>
+							</div> {% endcomment %}
+						</div>
+
+						<div class="panel panel-default">
+							 {% for c in categ %}
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordian" href="#{{c.name}}">
+										<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+										{{c.name}}
+										
+									</a>
+								</h4>
+							</div>
+							
+							<div id="{{c.name}}" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul>
+										
+										<li><a href="{% url 'frontend:category' c.id %}">{{c}}</a></li>
+
+										 
+									</ul>
+								</div>
+							</div>
+							{% endfor %}
+						</div> 
+						
+						 <div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordian" href="#womens">
+									
+										
+									</a>
+								</h4>
+							</div> 
+							 <div id="womens" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul>
+										
+									</ul>
+								</div>
+							</div> 
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								
+							</div>
+						</div>
+						
+					
+					</div><!--/category-productsr-->
+				
+					<div class="brands_products"><!--brands_products-->
+						
+					</div><!--/brands_products-->
+					
+					<div class="price-range"><!--price-range-->
+						
+					</div><!--/price-range-->
+					
+					<div class="shipping text-center"><!--shipping-->
+						<img src="{% static 'images/home/shipping.jpg' %}" alt="" />
+					</div><!--/shipping-->
+					
+				</div>
+			</div>
+			
+			<div class="col-sm-9 padding-right">
+				<div class="features_items"><!--features_items-->
+					<h2 class="title text-center">Wishlist </h2>
+
+					
+						 
+							{% for w in wishlist%}
+							<div class="col-sm-4">
+								<div class="product-image-wrapper">
+									<div class="single products">
+										<div class="productinfo text-center">
+											<a href="/productdetail/{{product.id}}/">
+											{% if w.product.productimages_set.first %} 
+												<img class="thumbnail" src="{{w.product.productimages_set.first.image.url}}" width="268" height="249" alt"/>
+		
+											{% endif %}
+
+											<h2>{{w.product}}</h2>
+							
+											<h4 style = "display:inline-block; float:right">${{w.product.price|floatformat:2}}</h4>
+											<a href="" data-product={{product.id}} data-action="add" onclick="myFunction()" class="btn btn-default add-to-cart update-cart ">
+												<i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</a>
+											
+										</div>
+										<div class="choose">
+											<ul class="nav nav-pills nav-justified">
+												{% if user.is_authenticated %}
+												<li><a data-product={{product.id}}  data-action="" onclick="myFunction()" href=""><i class="fa fa-plus-square "></i>Add to wishlist</a></li>
+												{% else %}
+												<li><a href=""><i class="fa fa-plus-square disabled"></i>Add to wishlist</a></li>
+												{% endif%}
+												<li><a data-product={{product.id}}  data-action="delete" href=""><i class="fa fa-trash" aria-hidden="true"></i></i>Remove from Wishlist </a></li>
+											</ul>
+										</div>
+									</div>
+									
+								</div>
+									
+							</div>
+							
+							{% endfor %}
+						
+				</div>
+			</div>								
+
+
+					<ul class="pagination">
+						<li class="active"><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">&raquo;</a></li>
+					</ul>
+				</div><!--features_items-->
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/price-range.js' %}"></script>
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+{% endblock content %}

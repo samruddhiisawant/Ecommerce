@@ -1,0 +1,75 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+{% block content%}
+
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Sales Reports</h3><br><br>
+      <div class="dt-buttons btn-group flex-wrap">               
+        <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="example1" type="button"><span>Copy</span></button> <button class="btn btn-secondary buttons-csv buttons-html5" tabindex="0" aria-controls="example1" type="button"><span>CSV</span></button> <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="example1" type="button"><span>Excel</span></button> <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="example1" type="button"><span>PDF</span></button> <button class="btn btn-secondary buttons-print" tabindex="0" aria-controls="example1" type="button"><span>Print</span></button> <div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle buttons-colvis" tabindex="0" aria-controls="example1" type="button" aria-haspopup="true" aria-expanded="false"><span>Column visibility</span></button></div> </div>
+        
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <form method="POST" action="#" >
+        {% csrf_token %}
+      <div class="col-md-3">
+        From:<input class="form-control" type="date" name="fromdate"/>
+        </div>
+        <div class="col-md-3">
+        To:<input class="form-control" type="date" name="todate"/>
+        </div>
+        <br>
+        <div class="col-md-3">
+        <input type="submit" class="form-control" value="Search"/>
+        </div>
+      </form>
+      <hr>
+      <table id="example2" class="table table-bordered table-striped">
+        <br><br>
+        
+        <thead>
+          
+          
+        <tr>
+          <th>Order id</th>
+          <th>Customer</th>
+          <th>status</th>
+          <th>shipping_method</th>
+          <th>grand_total</th>
+          <th>Created at</th>
+        </tr>
+        </thead>
+        <tbody>
+          
+          {% for x in userdet%}
+        <tr>
+          <td>{{x.id}}</td>
+          <td>{{x.customer}}</td>
+          <td>{{x.status}}</td>
+          <td>{{x.shipping_method}}</td>
+          <td>{{x.grand_total}}</td>
+          <td>{{x.created_date}}</td>
+         
+        </tr>
+       {% endfor %}
+        </tbody>
+        <tfoot>
+        
+        </tfoot>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+
+
+{% endblock%}

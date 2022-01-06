@@ -1,0 +1,17 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block title%}
+    {{ flatpage.title }}
+
+{% endblock%}
+
+{% block content%}
+    hell welcome user
+  {% for page in flatpages %}
+    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+  {% endfor %}
+</ul> 
+    {{ flatpage.content }}
+
+{% endblock%}
